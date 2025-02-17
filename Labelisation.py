@@ -56,7 +56,7 @@ def ccAreaFilter(image, seuil):
     
     return nouvelle_image
 
-chemin_image = "cas5.png"
+chemin_image = "binary.png"
 image = Image.open(chemin_image)
 image = np.array(image)
 seuil = 200
