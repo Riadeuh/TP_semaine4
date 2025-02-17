@@ -50,7 +50,7 @@ image = cv2.imread(image_path)  # Ouvre l'image en noir et blanc
 
 # Appliquer le seuil d'Otsu
 threshold = thresholdOtsu(image)
-print(f"Le seuil optimal d'Otsu est : {threshold}")
+print(f"On trouve le seuil suivant : {threshold}")
 
 image_bin =  (image > threshold).astype(np.uint8) * 255# Tous les pixels au-dessus du seuil deviennent 1 (blanc), les autres 0 (noir)
 
