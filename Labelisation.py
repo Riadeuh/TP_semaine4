@@ -56,10 +56,15 @@ def ccAreaFilter(image, seuil):
     
     return nouvelle_image
 
+#chargement de l'image pour la traiter
 chemin_image = "binary.png"
 image = Image.open(chemin_image)
 image = np.array(image)
+
+#on détermine un seuil
 seuil = 9
+
+
 image_label = ccLabel(image)
 image_filtrée = ccAreaFilter(image, seuil)
 image_finale = ccLabel(image_filtrée)

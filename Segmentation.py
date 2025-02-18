@@ -41,17 +41,16 @@ def thresholdOtsu(image):
     
     return optimal_threshold
 
-# Exemple d'utilisation
-image_path = "blobs.png"  # Remplacez par le chemin de votre image
-image = cv2.imread(image_path)  # Ouvre l'image en noir et blanc
+image_path = "blobs.png"
+image = cv2.imread(image_path)
 
-# Appliquer le seuil d'Otsu
+#on trouve le seuile d'otsu sur l'image demandée
 threshold = thresholdOtsu(image)
 print(f"On trouve le seuil suivant : {threshold}")
 
-image_bin =  (image > threshold).astype(np.uint8) * 255# Tous les pixels au-dessus du seuil deviennent 1 (blanc), les autres 0 (noir)
+#on applique la valeur du seuillage sur l'image (blanc si le pixel est inférieur au seuil noir sinon)
+image_bin =  (image > threshold).astype(np.uint8) * 255
 
-# Afficher l'image binaire
 plt.imshow(image_bin, cmap='gray')
 plt.title("seuil d'Otsu")
 plt.axis('off')
