@@ -59,16 +59,23 @@ def ccAreaFilter(image, seuil):
 chemin_image = "binary.png"
 image = Image.open(chemin_image)
 image = np.array(image)
-seuil = 200
-image = ccLabel(image)
+seuil = 9
+image_label = ccLabel(image)
 image_filtrée = ccAreaFilter(image, seuil)
+image_finale = ccLabel(image_filtrée)
 
-plt.imshow(image,cmap = "jet")
-plt.title("Image originale")
+plt.imshow(image_label,cmap = "jet")
+plt.title("Labélisation de l'image originale")
 plt.show()
 
 plt.imshow(image_filtrée, cmap="jet")
 plt.title(f"Image filtrée avec seuil {seuil}")
 plt.show()
+
+plt.imshow(image_finale,cmap = "jet")
+plt.title("Labélisation de l'image filtrée")
+plt.show()
+
+
 
 
