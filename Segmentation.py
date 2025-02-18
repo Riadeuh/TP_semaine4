@@ -4,9 +4,6 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 def thresholdOtsu(image):
-    # Convertir l'image en niveaux de gris (si elle n'est pas déjà)
-    if isinstance(image, Image.Image):
-        image = np.array(image.convert('L'))
     
     # Calculer l'histogramme de l'image
     hist, bin_edges = np.histogram(image.flatten(), bins=256, range=(0, 256))
