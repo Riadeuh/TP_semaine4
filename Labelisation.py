@@ -9,7 +9,6 @@ def ccLabel(image):
     hauteur, largeur = len(image), len(image[0])
     etiquettes = [[0] * largeur for _ in range(hauteur)]
     etiquette_actuelle = 0
-    
     for i in range(hauteur):
         for j in range(largeur):
             if image[i][j] != 0 and etiquettes[i][j] == 0:
@@ -22,20 +21,15 @@ def ccLabel(image):
                         for vx, vy in voisins_4(px, py):
                             if 0 <= vx < hauteur and 0 <= vy < largeur and image[vx][vy] == image[i][j] and etiquettes[vx][vy] == 0:
                                 pile.append((vx, vy))
-    
     return etiquettes
 
 def ccAreaFilter(image, seuil):
-    # Applique le ccLabel pour obtenir les étiquettes des composantes connexes
     etiquettes = ccLabel(image)
     
-    # Dimensions de l'image
     hauteur, largeur = len(image), len(image[0])
     
-    # Dictionnaire pour stocker la taille de chaque composante connexe
     tailles = {}
     
-    # Calcul de la taille de chaque composante connexe
     for i in range(hauteur):
         for j in range(largeur):
             etiquette = etiquettes[i][j]
@@ -44,10 +38,8 @@ def ccAreaFilter(image, seuil):
                     tailles[etiquette] = 0
                 tailles[etiquette] += 1
     
-    # Créer une nouvelle image pour appliquer le filtre d'aire
     nouvelle_image = np.zeros_like(image)
     
-    # Parcours des étiquettes pour garder uniquement les composantes supérieures au seuil
     for i in range(hauteur):
         for j in range(largeur):
             etiquette = etiquettes[i][j]
